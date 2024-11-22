@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý phòng khách sạn</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Trang chủ Quản lý phòng khách sạn</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash {{ messages[0][0] }}">
+                {{ messages[0][1] }}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <nav>
+        <a href="{{ url_for('add_room') }}">Thêm phòng</a> |
+        <a href="{{ url_for('view_rooms') }}">Xem danh sách phòng</a>
+    </nav>
+</body>
+</html>

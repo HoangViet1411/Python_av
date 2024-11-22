@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm Phòng</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Thêm Phòng Mới</h1>
+    <form method="POST">
+        <label>Số phòng: <input type="text" name="room_number" required></label><br>
+        <label>Loại phòng:
+            <select name="room_type">
+                <option>Single</option>
+                <option>Double</option>
+                <option>Suite</option>
+            </select>
+        </label><br>
+        <label>Trạng thái:
+            <select name="status">
+                <option>Available</option>
+                <option>Booked</option>
+                <option>Occupied</option>
+            </select>
+        </label><br>
+        <label>Giá phòng: <input type="text" name="price" required></label><br>
+        <label>Mô tả phòng: <textarea name="description"></textarea></label><br>
+        <button type="submit">Thêm phòng</button>
+        <a href="{{ url_for('index') }}" class="go-home">quay về trang chủ</a>
+    </form>
+</body>
+</html>

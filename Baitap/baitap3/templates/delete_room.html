@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Xóa Phòng</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Xác Nhận Xóa Phòng</h1>
+    <p>Bạn có chắc chắn muốn xóa phòng số <strong>{{ room[1] }}</strong> không?</p>
+    <form action="{{ url_for('delete_room', room_number=room[1]) }}" method="post">
+        <button type="submit">Xóa phòng</button>
+        <a href="{{ url_for('view_rooms') }}">Hủy</a>
+    </form>
+</body>
+</html>

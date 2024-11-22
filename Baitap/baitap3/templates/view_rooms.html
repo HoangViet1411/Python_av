@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh Sách Phòng</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Danh Sách Phòng</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash {{ messages[0][0] }}">
+                {{ messages[0][1] }}
+            </div>
+        {% endif %}
+    {% endwith %}
+    <a href="{{ url_for('index') }}">quay về trang chủ</a>
+    <table border="1">
+        <tr>
+            <th>Số phòng</th>
+            <th>Loại phòng</th>
+            <th>Trạng thái</th>
+            <th>Giá</th>
+            <th>Mô tả</th>
+            <th>Hành động</th>
+        </tr>
+        {% for room in rooms %}
+        <tr>
+            <td>{{ room[1] }}</td>
+            <td>{{ room[2] }}</td>
+            <td>{{ room[3] }}</td>
+            <td>{{ room[4] }}</td>
+            <td>{{ room[5] }}</td>
+            <td>
+                <a href="{{ url_for('update_room', room_number=room[1]) }}">Sửa</a> |
+                <form action="{{ url_for('delete_room', room_number=room[1]) }}" method="post" style="display:inline;">
+                    <button type="submit">Xóa</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

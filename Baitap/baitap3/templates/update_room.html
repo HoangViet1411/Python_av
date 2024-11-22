@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Cập Nhật Phòng</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Cập Nhật Thông Tin Phòng</h1>
+    <form method="POST">
+        <label>Số phòng: <input type="text" name="room_number" value="{{ room[1] }}" readonly></label><br>
+        <label>Loại phòng:
+            <select name="room_type">
+                <option value="Single" {% if room[2] == "Single" %}selected{% endif %}>Single</option>
+                <option value="Double" {% if room[2] == "Double" %}selected{% endif %}>Double</option>
+                <option value="Suite" {% if room[2] == "Suite" %}selected{% endif %}>Suite</option>
+            </select>
+        </label><br>
+        <label>Trạng thái:
+            <select name="status">
+                <option value="Available" {% if room[3] == "Available" %}selected{% endif %}>Available</option>
+                <option value="Booked" {% if room[3] == "Booked" %}selected{% endif %}>Booked</option>
+                <option value="Occupied" {% if room[3] == "Occupied" %}selected{% endif %}>Occupied</option>
+            </select>
+        </label><br>
+        <label>Giá phòng: <input type="text" name="price" value="{{ room[4] }}" required></label><br>
+        <label>Mô tả phòng: <textarea name="description">{{ room[5] }}</textarea></label><br>
+        <button type="submit">Cập nhật phòng</button>
+    </form>
+    <a href="{{ url_for('view_rooms') }}">Quay lại danh sách phòng</a>
+</body>
+</html>
